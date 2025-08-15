@@ -1,4 +1,4 @@
-import type { Product, Review, User, Order } from './types';
+import type { Product, Review, User, Order, Customer } from './types';
 
 export const products: Product[] = [
   {
@@ -136,6 +136,7 @@ export const orders: Order[] = [
     date: '2024-05-15',
     status: 'Delivered',
     total: 1629.98,
+    customerName: "Jane Doe",
     items: [
       { productId: 'prod_001', productName: 'Aura Pro Laptop 14"', quantity: 1, price: 1499.99 },
       { productId: 'prod_004', productName: 'Gamer Pro X Keyboard', quantity: 1, price: 129.99 },
@@ -146,11 +147,28 @@ export const orders: Order[] = [
     date: '2024-04-28',
     status: 'Delivered',
     total: 349.50,
+    customerName: "John Smith",
     items: [
       { productId: 'prod_003', productName: 'SoundWave+ Headphones', quantity: 1, price: 349.50 },
     ]
+  },
+  {
+    id: 'ORD-2024-987654',
+    date: '2024-05-20',
+    status: 'Processing',
+    total: 899.00,
+    customerName: "Emily White",
+    items: [
+      { productId: 'prod_002', productName: 'Galaxy Smartphone Z10', quantity: 1, price: 899.00 },
+    ]
   }
 ];
+
+export const customers: Customer[] = [
+    { id: 'cust_001', name: 'Jane Doe', email: 'jane.d@example.com', phone: '555-123-4567', registeredDate: '2023-01-15', orderCount: 2, totalSpent: 1800.50, avatar: '/avatars/01.png'},
+    { id: 'cust_002', name: 'John Smith', email: 'john.s@example.com', phone: '555-987-6543', registeredDate: '2022-11-30', orderCount: 5, totalSpent: 3250.00, avatar: '/avatars/02.png'},
+    { id: 'cust_003', name: 'Emily White', email: 'emily.w@example.com', phone: '555-555-5555', registeredDate: '2023-08-22', orderCount: 1, totalSpent: 899.00, avatar: '/avatars/03.png'},
+]
 
 export const allBrands = [...new Set(products.map(p => p.brand))];
 export const allCategories = [...new Set(products.map(p => p.category))];

@@ -38,4 +38,16 @@ export interface Order {
     quantity: number;
     price: number;
   }[];
+  customerName?: string;
+}
+
+export interface Customer {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    registeredDate: string;
+    orderCount: number;
+    totalSpent: number;
+    avatar: string;
 }
