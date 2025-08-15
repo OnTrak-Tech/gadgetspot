@@ -1,6 +1,33 @@
+import { prisma } from './prisma'
 import type { Product, Review, User, Order, Customer } from './types';
 
-export const products: Product[] = [
+// Database functions
+export async function getProducts() {
+  return await prisma.product.findMany()
+}
+
+export async function getProduct(id: string) {
+  return await prisma.product.findUnique({
+    where: { id },
+    include: { reviews: true }
+  })
+}
+
+export async function createOrder(userId: string, items: any[], total: number) {
+  return await prisma.order.create({
+    data: {
+      userId,
+      total,
+      items: {
+        create: items
+      }
+    },
+    include: { items: true }
+  })
+}
+
+// Mock data for seeding
+export const seedProducts: Product[] = [
   {
     id: 'prod_001',
     name: 'Aura Pro Laptop 14"',
@@ -114,6 +141,9 @@ export const products: Product[] = [
     reviewCount: 150,
   },
 ];
+
+// Alias for existing imports
+export const products = seedProducts;
 
 export const reviews: { [productId: string]: Review[] } = {
   'prod_001': [

@@ -19,9 +19,6 @@ export default function AdminSidebar() {
 
   return (
     <aside className="hidden w-64 flex-col border-r bg-background sm:flex">
-      <div className="flex h-16 items-center border-b px-6">
-        <Logo />
-      </div>
       <nav className="flex-1 p-4">
         <ul className="space-y-1">
           {navLinks.map((link) => (

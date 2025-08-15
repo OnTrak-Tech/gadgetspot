@@ -1,10 +1,18 @@
+import { redirect } from 'next/navigation'
+import { requireAdmin } from '@/lib/auth'
 import AdminSidebar from "@/components/admin/AdminSidebar";
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  try {
+    await requireAdmin()
+  } catch {
+    redirect('/auth/signin?callbackUrl=/admin')
+  }
+
   return (
     <div className="flex min-h-screen bg-gray-100/50">
       <AdminSidebar />
