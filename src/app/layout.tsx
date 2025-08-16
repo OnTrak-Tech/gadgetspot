@@ -4,8 +4,7 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/contexts/CartContext';
 import AuthProvider from '@/components/providers/SessionProvider'
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import ConditionalLayout from '@/components/layout/ConditionalLayout';
 
 export const metadata: Metadata = {
   title: 'GadgetSpot',
@@ -27,9 +26,7 @@ export default function RootLayout({
       <body className={cn('font-body antialiased flex flex-col min-h-screen')}>
         <AuthProvider>
           <CartProvider>
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
+            <ConditionalLayout>{children}</ConditionalLayout>
           </CartProvider>
         </AuthProvider>
         <Toaster />

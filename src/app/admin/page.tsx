@@ -16,9 +16,9 @@ export default function AdminDashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$45,231.89</div>
+            <div className="text-2xl font-bold">$0.00</div>
             <p className="text-xs text-muted-foreground">
-              +20.1% from last month
+              No data available
             </p>
           </CardContent>
         </Card>
@@ -30,9 +30,9 @@ export default function AdminDashboard() {
             <ShoppingCart className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+2350</div>
+            <div className="text-2xl font-bold">0</div>
             <p className="text-xs text-muted-foreground">
-              +180.1% from last month
+              No orders yet
             </p>
           </CardContent>
         </Card>
@@ -42,9 +42,9 @@ export default function AdminDashboard() {
             <Package className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">128</div>
+            <div className="text-2xl font-bold">0</div>
             <p className="text-xs text-muted-foreground">
-              +19 from last month
+              No products added
             </p>
           </CardContent>
         </Card>
@@ -56,9 +56,9 @@ export default function AdminDashboard() {
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+573</div>
+            <div className="text-2xl font-bold">0</div>
             <p className="text-xs text-muted-foreground">
-              +201 since last hour
+              No customers registered
             </p>
           </CardContent>
         </Card>

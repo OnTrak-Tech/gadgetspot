@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Package, Home, ShoppingCart, Users, LineChart } from "lucide-react";
-import Logo from "@/components/shared/Logo";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -18,7 +17,7 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-64 flex-col border-r bg-background sm:flex">
+    <aside className="w-64 flex-col border-r bg-background flex">
       <nav className="flex-1 p-4">
         <ul className="space-y-1">
           {navLinks.map((link) => (

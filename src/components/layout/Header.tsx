@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import Logo from "@/components/shared/Logo";
 import CartSheet from "../cart/CartSheet";
 import { useCart } from "@/contexts/CartContext";
+import { useSession, signIn, signOut } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,6 +26,7 @@ const navLinks = [
 
 export default function Header() {
   const { itemCount } = useCart();
+  const { data: session } = useSession();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -80,24 +82,33 @@ export default function Header() {
               className="pl-8"
             />
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <User className="h-5 w-5" />
-                <span className="sr-only">User Account</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link href="/account">Profile & Orders</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          
+          {session ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <User className="h-5 w-5" />
+                  <span className="sr-only">User Account</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/account">Profile & Orders</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>Support</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => signOut()}>
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button variant="ghost" onClick={() => signIn()}>
+              Sign In
+            </Button>
+          )}
 
           <CartSheet>
             <Button variant="ghost" size="icon" className="relative">
